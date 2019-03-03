@@ -25,6 +25,24 @@ console.log(str.match(regex));
 ```
 
 
+## Flags
+### Not-sensitive case ```i``` 
+```javascript
+const str = 'Mr. Cat is a feline.';
+const regex = /cat/i;
+console.log(regex.test(str));
+// true
+```
+
+### Global
+```javascript
+const str = 'We are going to extract two animals, the cat and Mr. Cat';
+const regex = /cat/ig; // We are using i and g flags
+console.log(str.match(regex));
+// [ 'cat', 'Cat' ]
+```
+
+
 ## Operators
 ### OR ```|```
 ```javascript
@@ -75,22 +93,3 @@ console.log(str.match(regex));
 // [ 'D', 'g', ' ', ' ', 'n', 'd', ' ', 'c', 't', ' ' ]
 ```
 
-## Flags
-### Not-sensitive case ```i``` 
-```javascript
-const strings = [
-  'cats.',
-  'Cats.'
-];
-const regex = /cats/i;
-console.log(strings.map(s => regex.test(s)));
-// [ true, true ]
-```
-
-### Global
-```javascript
-const str = 'We are going to extract two animals, the cat and Mr. Cat';
-const regex = /cat/ig; // We are using i and g flags
-console.log(str.match(regex));
-// [ 'cat', 'Cat' ]
-```
