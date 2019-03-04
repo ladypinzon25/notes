@@ -80,12 +80,13 @@ console.log(str.match(regex));
 
 ### Ranges ```[a - b]```
 ```javascript
-const str = 'Here we have numbers(1,2,3,4,5) and letters';
+const str = 'Here we have numbers(1,2,3,4,5) and letters.';
 const regex = /[1-5]/g; // We could use [a-z] too. To use both, use:[a-z1-5] 
 console.log(str.match(regex));
 // [ '1', '2', '3', '4', '5' ]
 ```
-### Negative match
+
+### Negative match ```[^...]```
 ```javascript
 const str = 'Dog 1 and cat 2';
 const regex = /[^1-5aeiou]/ig; // Everything that is not a number from 1 to 5 nor a vowel.
@@ -93,3 +94,69 @@ console.log(str.match(regex));
 // [ 'D', 'g', ' ', ' ', 'n', 'd', ' ', 'c', 't', ' ' ]
 ```
 
+### Zero or more times ```*```
+```javascript
+const strings = [
+  'It is goooooooal!',
+  'It is gun.',
+  'It is a cat.'
+];
+const regex = /go*/;
+console.log(strings.map(s => regex.test(s)));
+// [ true, true, false ]
+```
+
+### One or more times ```+```
+```javascript
+const strings = [
+  'It is goooooooal!',
+  'It is gun.'
+];
+const regex = /go*/;
+console.log(strings.map(s => regex.test(s)));
+// [ true, false ]
+```
+
+### Lazy matching ```?```
+As default regex is greedy, which that it returns the longest substring that satisfies the regex. On the other hand, the
+lazy matching is going to return the shortest substring.
+```javascript
+const str = 'Michin';
+const regex = [
+  /m.*i/i,
+  /m.*?i/i
+];
+console.log(regex.map(r => str.match(r)).join('\n'));
+// Michi
+// Mi
+```
+
+### Search at the beginning ```^```
+```javascript
+const strings = [
+  'Michin is at the beginning',
+  'Now at the end is Michin'
+];
+const regex = /^michin/i;
+console.log(strings.map(s => regex.test(s)));
+// [ true, false ]
+```
+
+### Search at the ending ```$```
+```javascript
+const strings = [
+  'Michin is at the beginning',
+  'Now at the end is Michin'
+];
+const regex = /michin$/i;
+console.log(strings.map(s => regex.test(s)));
+// [ false, true ]
+```
+
+### Search for any number, letter or _ ```\w```
+```javascript
+const str= 'a2B1? c3_a2.';
+const regex = /\w/g;
+console.log(str.match(regex));
+// [ 'a', '2', 'B', '1', 'c', '3', '_', 'a', '2' ]
+```
