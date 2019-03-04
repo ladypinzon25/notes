@@ -34,7 +34,7 @@ console.log(regex.test(str));
 // true
 ```
 
-### Global
+### Global ```g```
 ```javascript
 const str = 'We are going to extract two animals, the cat and Mr. Cat';
 const regex = /cat/ig; // We are using i and g flags
@@ -142,7 +142,7 @@ console.log(strings.map(s => regex.test(s)));
 // [ true, false ]
 ```
 
-### Search at the ending ```$```
+### Search at the end ```$```
 ```javascript
 const strings = [
   'Michin is at the beginning',
