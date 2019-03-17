@@ -1,5 +1,7 @@
 # Regex
 
+Course: https://scrimba.com/p/peyvVAN/
+
 ## Basics
 ### Create
 ```javascript
@@ -76,6 +78,22 @@ const str = 'Here is a cat, a car, a can and a cab.';
 const regex = /ca[trn]/g;
 console.log(str.match(regex));
 // [ 'cat', 'car', 'can' ]
+```
+
+### Search for digits ```\d```
+```javascript
+const str= 'a2B1? c3_a2.';
+const regex = /\d/g;
+console.log(str.match(regex));
+// [ '2', '1', '3', '2' ]
+```
+
+### Search for everything but digits ```\D```
+```javascript
+const str= 'a2B1? c3_a2.';
+const regex = /\D/g;
+console.log(str.match(regex));
+// [ 'a', 'B', '?', ' ', 'c', '_', 'a', '.' ]
 ```
 
 ### Ranges ```[a - b]```
@@ -159,4 +177,41 @@ const str= 'a2B1? c3_a2.';
 const regex = /\w/g;
 console.log(str.match(regex));
 // [ 'a', '2', 'B', '1', 'c', '3', '_', 'a', '2' ]
+```
+
+### Search for anything different from a number, letter or _ ```\W```
+```javascript
+const str= 'a2B1? c3_a2.';
+const regex = /\W/g;
+console.log(str.match(regex));
+// [ '?', ' ', '.' ]
+```
+
+### Quantifiers ```{min,max}```,```+```,```*```,```?```
+```+```: one or more
+
+```*```: zero or more
+
+```?```: zero or one
+
+```javascript
+const strings = [
+  'It is gooal.',
+  'It is gooooal.',
+  'It is goal.'
+];
+const regex = /o{2,4}/;
+console.log(strings.map(s => regex.test(s)));
+// [ true, true, false ]
+```
+
+### Search for white spaces ```\s```
+```javascript
+const strings = [
+  'Michin and Misifus',
+  'Michin'
+];
+const regex = /\s/;
+console.log(strings.map(s => regex.test(s)));
+// [ true, false ]
 ```
